@@ -1,30 +1,11 @@
 
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open('papelaria-cache-v1').then(cache => {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/manifest.json',
-        '/icon-192.png',
-        '/icon-512.png'
-        // Adicione aqui outros arquivos importantes do app
-      ]);
+      return cache.addAll(['/','/index.html','/manifest.json','/app.js']);
     })
   );
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.filter(key => key !== 'papelaria-cache-v1')
-            .map(key => caches.delete(key))
-      )
-    )
-  );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {

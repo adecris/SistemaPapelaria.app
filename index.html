@@ -8,38 +8,13 @@
   <link rel="manifest" href="/manifest.json"/>
   <link rel="icon" href="/icon-192.png" type="image/png"/>
   <title>Cristina Sá - Papelaria Criativa</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #fdf2f8;
-      color: #6b21a8;
-      text-align: center;
-      padding: 2rem;
-    }
-    h1 {
-      color: #ec4899;
-    }
-    button {
-      padding: 1rem 2rem;
-      background-color: #f9a8d4;
-      border: none;
-      border-radius: 1rem;
-      font-size: 1.2rem;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
 </head>
 <body>
-  <h1>Cristina Sá - Papelaria Criativa</h1>
-  <p>App pronto para gerenciamento de pedidos, clientes e finanças.</p>
-  <button onclick="window.print()">Imprimir Página</button>
-
+  <div id="root"></div>
+  <script type="module" src="/app.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(() => console.log("Service Worker registrado com sucesso."))
-        .catch(err => console.error("Erro ao registrar Service Worker:", err));
+      navigator.serviceWorker.register('/service-worker.js');
     }
   </script>
 </body>
