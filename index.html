@@ -11,15 +11,16 @@
     body { font-family: sans-serif; background: #fff0f5; padding: 1rem; color: #4b5563; }
     h2 { color: #ec4899; }
     input, select, textarea { display: block; margin-bottom: .5rem; width: 100%; padding: .5rem; border-radius: .5rem; border: 1px solid #ccc; }
-    button { background: #f9a8d4; border: none; padding: .5rem 1rem; border-radius: 1rem; cursor: pointer; }
+    button { background: #f9a8d4; border: none; padding: .5rem 1rem; border-radius: 1rem; cursor: pointer; margin-right: 0.5rem; }
     .pedido { background: #ffe4e6; margin: .5rem 0; padding: .5rem; border-radius: .5rem; }
+    canvas { background: #fff; margin-top: 1rem; padding: 1rem; border-radius: 1rem; }
   </style>
 </head>
 <body>
   <h2>Pedidos</h2>
   <form id="pedido-form">
-    <input id="cliente" placeholder="Cliente" required />
-    <input id="produto" placeholder="Produto" required />
+    <select id="cliente" required></select>
+    <select id="produto" required></select>
     <input id="valor" placeholder="Valor (R$)" type="number" step="0.01" required />
     <select id="status">
       <option value="Pendente">Pendente</option>
@@ -30,6 +31,10 @@
     <button type="submit">Adicionar</button>
   </form>
 
+  <button id="add-cliente">+ Cliente</button>
+  <button id="add-produto">+ Produto</button>
+  <button id="exportar">Exportar PDF</button>
+
   <hr/>
   <input id="filtro" placeholder="Buscar por cliente..." />
   <select id="status-filtro">
@@ -38,6 +43,7 @@
     <option value="Pago">Pagos</option>
   </select>
 
+  <canvas id="grafico" height="150"></canvas>
   <div id="lista-pedidos"></div>
 </body>
 </html>
